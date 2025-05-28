@@ -1,3 +1,5 @@
+![FLAPPY_BIRD](FLAPPY_BIRD\Screenshot 2025-05-28 070810.png)
+
 # FlapPyBird with DQN AI
 
 This project is a clone of the classic Flappy Bird game built with Python and Pygame, extended with a Deep Q-Learning (DQN) based AI agent that learns to play the game.
@@ -67,13 +69,15 @@ src/
 To play the classic Flappy Bird game manually:
 
 Navigate to the project root in your terminal and run:
+
 ```bash
 python main.py
 ```
 
 **Controls:**
--   **Up Arrow** or **Space**: Make the bird flap.
--   **Esc**: Quit the game.
+
+- **Up Arrow** or **Space**: Make the bird flap.
+- **Esc**: Quit the game.
 
 ## AI Implementation (Deep Q-Learning)
 
@@ -81,13 +85,13 @@ The AI agent is implemented using Deep Q-Learning. It learns to play the game by
 
 ### Components:
 
--   **`dqn_agent.py`**: Defines the DQN neural network model and the agent's learning logic (epsilon-greedy action selection, experience replay, training step).
--   **`flappy_env.py`**: An OpenAI Gym-like environment wrapper around the game logic, providing the state representation, handling actions, and calculating rewards.
-    -   **State Input**: A 5-dimensional normalized NumPy array representing the game state.
-    -   **Action Output**: An integer: `0` (do nothing) or `1` (flap).
-    -   **Reward**: +1 for passing a pipe, -1 for crashing, 0 otherwise.
--   **`flappy_headless.py`**: A version of the game logic optimized for fast, headless training (no rendering or sound). Enabled when `FLAPPY_HEADLESS=1` environment variable is set.
--   **`flappy_visual.py`**: A version of the game logic that includes rendering for visual training or evaluation.
+- **`dqn_agent.py`**: Defines the DQN neural network model and the agent's learning logic (epsilon-greedy action selection, experience replay, training step).
+- **`flappy_env.py`**: An OpenAI Gym-like environment wrapper around the game logic, providing the state representation, handling actions, and calculating rewards.
+  - **State Input**: A 5-dimensional normalized NumPy array representing the game state.
+  - **Action Output**: An integer: `0` (do nothing) or `1` (flap).
+  - **Reward**: +1 for passing a pipe, -1 for crashing, 0 otherwise.
+- **`flappy_headless.py`**: A version of the game logic optimized for fast, headless training (no rendering or sound). Enabled when `FLAPPY_HEADLESS=1` environment variable is set.
+- **`flappy_visual.py`**: A version of the game logic that includes rendering for visual training or evaluation.
 
 ## Training the AI
 
@@ -113,9 +117,9 @@ To run **visual training** (for monitoring early stages):
 python -m src.ai.train_dqn
 ```
 
--   Training logs will be saved in `logs/train_log.jsonl` (if enabled). **Note:** Logging to file is currently disabled in `train_dqn.py` for speed.
--   Model checkpoints will be saved periodically in the `checkpoints/` directory.
--   Training will automatically resume from the latest checkpoint found.
+- Training logs will be saved in `logs/train_log.jsonl` (if enabled). **Note:** Logging to file is currently disabled in `train_dqn.py` for speed.
+- Model checkpoints will be saved periodically in the `checkpoints/` directory.
+- Training will automatically resume from the latest checkpoint found.
 
 ### Parallel Training:
 
@@ -133,8 +137,8 @@ export FLAPPY_HEADLESS=1
 python -m src.ai.parallel_train_dqn
 ```
 
--   Parallel training logs are saved in `logs/parallel_train_log.jsonl`.
--   Model checkpoints are saved in `checkpoints/` with a different naming convention (`dqn_parallel_ep*.pt`).
+- Parallel training logs are saved in `logs/parallel_train_log.jsonl`.
+- Model checkpoints are saved in `checkpoints/` with a different naming convention (`dqn_parallel_ep*.pt`).
 
 ## Evaluating the Trained AI
 
@@ -146,16 +150,16 @@ Use `src/ai/play_dqn.py`.
 python -m src.ai.play_dqn
 ```
 
--   This script loads the latest checkpoint from `checkpoints/` (specifically looking for `dqn_ep1370.pt` based on current code, adjust `get_latest_checkpoint` if needed).
--   The game window will open, and you will see the AI controlling the bird.
+- This script loads the latest checkpoint from `checkpoints/` (specifically looking for `dqn_ep1370.pt` based on current code, adjust `get_latest_checkpoint` if needed).
+- The game window will open, and you will see the AI controlling the bird.
 
 ## Customization
 
--   **Model Architecture**: Modify the `DQN` class in `dqn_agent.py`.
--   **Hyperparameters**: Adjust agent hyperparameters (`gamma`, `lr`, `epsilon` schedule, etc.) in the `DQNAgent` class or training scripts.
--   **Environment State/Reward**: Customize the state representation or reward function in `flappy_env.py`.
--   **Checkpoint Frequency**: Change `CKPT_FREQ` in the training scripts.
--   **Number of Parallel Environments**: Change `NUM_ENVS` in `parallel_train_dqn.py`.
+- **Model Architecture**: Modify the `DQN` class in `dqn_agent.py`.
+- **Hyperparameters**: Adjust agent hyperparameters (`gamma`, `lr`, `epsilon` schedule, etc.) in the `DQNAgent` class or training scripts.
+- **Environment State/Reward**: Customize the state representation or reward function in `flappy_env.py`.
+- **Checkpoint Frequency**: Change `CKPT_FREQ` in the training scripts.
+- **Number of Parallel Environments**: Change `NUM_ENVS` in `parallel_train_dqn.py`.
 
 ---
 
