@@ -1,4 +1,4 @@
-<img src="[images/flappybird.png](https://github.com/Mahendra-Singh-Thakur/FLAPPY_BIRD/blob/main/Screenshot%202025-05-28%20083438.png)" alt="Flappy Bird" width="200"/>
+<img src="https://github.com/Mahendra-Singh-Thakur/FLAPPY_BIRD/blob/main/Screenshot%202025-05-28%20083438.png" alt="Flappy Bird" width="200"/>
 
 
 # FlapPyBird with DQN AI
