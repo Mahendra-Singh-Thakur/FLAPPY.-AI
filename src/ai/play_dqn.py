@@ -10,9 +10,12 @@ import os
 # Automatically find the latest checkpoint
 CKPT_DIR = "model"
 def get_latest_checkpoint():
-    ckpt_files = glob.glob(os.path.join(CKPT_DIR, "Version2.pt"))
+    ckpt_files = glob.glob(os.path.join(CKPT_DIR, "flappy_dqn_v2.pt"))
     if not ckpt_files:
-        raise FileNotFoundError("No checkpoint found in 'checkpoints/' directory.")
+        # Try to find any .pt file in the model directory
+        ckpt_files = glob.glob(os.path.join(CKPT_DIR, "*.pt"))
+    if not ckpt_files:
+        raise FileNotFoundError(f"No checkpoint found in '{CKPT_DIR}/' directory.")
     return max(ckpt_files, key=os.path.getctime)
 
 
